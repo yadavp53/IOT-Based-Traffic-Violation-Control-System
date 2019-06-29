@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% load static %}
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Omnifood is a fictitious premium food delivery service with the mission to bring affordable and healthy meals to as many people as possible.">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendors/css/node_modules/normalize.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendors/css/grid.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendors/css/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'vendors/css/ionicons.min.css' %}">
+	<link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'resources/css/styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'resources/css/queries.css' %}">
+	<title>All Vehicles</title>
+<style>
+	.hh {
+	background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url("{% static 'resources/img/admin.png' %}");
+	background-size: cover;
+	background-position: center;
+	height: 55vh; /* 100% of the viewport's height */
+	background-attachment: fixed;
+}
+
+</style>
+
+</head>
+<body>
+
+	<!-- Heading section -->
+
+	<header class="hh">
+		<nav>
+			<div class="row"> <!-- Keep within 1140px width -->
+				<h4 class="logo" style="color:#ffffff;">Welcome, {{ request.user.first_name }}</h4>
+				<h4 class="logo-black" style="color:orange;">Welcome, {{ request.user.first_name }}</h4>
+
+				<ul class="main-nav js--main-nav">
+					<li><a href="{% url 'admin_panel' %}">Home</a></li>
+
+					<li><a href="{% url 'logout' %}">Logout</a></li>
+
+				</ul>
+				<a class="mobile-nav-icon js--nav-icon"><i class="ion-navicon-round"></i></a> <!-- No href -->
+			</div>
+		</nav>
+		<div class="hero-text">
+
+			<h1>
+
+            </h1>
+            		</div>
+	</header>
+
+	<!-- Features section -->
+
+	<section>
+        <!-- Use for sticky nav activation -->
+
+
+        <div class="row">
+
+			<h2><span style="font-size:20px;"><b>All Vehicles Are Here</b></span></h2>
+
+				<!-- Longer dash + only use one h1, so using h2 -->
+
+
+
+		</div>
+
+			<div class="row ">
+                <div style="overflow-x:auto;">
+  <table>
+    <tr>
+      <th>S.no.</th>
+      <th>Owner Name</th>
+      <th>Mobile No.</th>
+      <th>Address</th>
+      <th>Vehicle No.</th>
+      <th>Vehicle Type</th>
+      <th>RFID No.</th>
+	  <th>Delete</th>
+
+    </tr>
+
+      {% for k in all_vehicle %}
+
+
+    <tr>
+     <td>{{ forloop.counter }}</td>
+      <td>{{ k.ownwr_name }}</td>
+      <td>{{ k.ownwr_mob }}</td>
+
+      <td>{{ k.ownwr_add }}</td>
+      <td>{{ k.vehicle_no }}</td>
+      <td>{{ k.vehicle_type }} - Wheeler</td>
+
+      <td>{{ k.rfid_no }}</td>
+		<td><a href="{% url 'delete' k.id %}"><i>Delete</i></a></td>
+
+    </tr>
+
+      {% endfor %}
+
+
+  </table>
+</div>
+
+
+
+			</div>
+
+
+
+
+
+		<!-- Grid using col -->
+
+	</section>
+
+	<!-- Meals section -->
+
+
+	<!-- How it works section -->
+
+
+	<!-- Cities section-->
+
+
+
+	<!-- Testimonials section -->
+
+
+	<!-- Plans section -->
+
+
+
+
+	<!-- Footer section -->
+
+	<footer>
+		<div class="row">
+			<div class="col span-1-of-2">
+				<ul class="footer-nav">
+					<li>
+						<a href="#">About us</a>
+					</li>
+					<li>
+						<a href="#">Blog</a>
+					</li>
+					<li>
+						<a href="#">Press</a>
+					</li>
+					<li>
+						<a href="#">iOS App</a>
+					</li>
+					<li>
+						<a href="#">Android App</a>
+					</li>
+				</ul>
+			</div>
+			<div class="col span-1-of-2">
+				<ul class="social-icons">
+					<li><a href="#"><i class="ion-social-facebook"></i></a></li>
+					<li><a href="#"><i class="ion-social-twitter"></i></a></li>
+					<li><a href="#"><i class="ion-social-instagram"></i></a></li>
+					<li><a href="#"><i class="ion-social-googleplus"></i></a></li>
+				</ul>
+			</div>
+		</div>
+
+	</footer>
+
+	<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+	<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="//cdn.jsdelivr.net/selectivizr/1.0.3b/selectivizr.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="{% static 'vendors/js/jquery.waypoints.min.js' %}"></script>
+	<script src="{% static 'resources/js/scripts.js' %}"></script> <!-- Sticky nav -->
+	<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script src="{% static 'vendors/js/gmaps.js' %}"></script>
+</body>
+</html>
